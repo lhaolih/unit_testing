@@ -1,5 +1,5 @@
 import pytest
-import main
+from src.main import *
 import pandas as pd
 
 class TestClass:
@@ -12,7 +12,7 @@ class TestClass:
         ]
 
         input_rdd = spark.sparkContext.parallelize(test_input, 1)
-        results = main.do_word_counts(input_rdd)
+        results = do_word_counts(input_rdd)
         expected_results = {'hello':2, 'spark':3, 'again':1}  
         assert results == expected_results
 
@@ -32,7 +32,7 @@ class TestClass:
             ('nick', 40)],
             ['name', 'age'],
         )
-        real_output = main.filter_spark_data_frame(input)
+        real_output = filter_spark_data_frame(input)
         real_output = self.get_sorted_data_frame(
             real_output.toPandas(),
             ['age', 'name'],

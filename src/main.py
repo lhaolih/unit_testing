@@ -8,8 +8,6 @@ def filter_spark_data_frame(
 ):
     return dataframe.where(col(column_name) > value)
 
-
-
 def do_word_counts(lines):
     counts = (lines.flatMap(lambda x: x.split())
                   .map(lambda x: (x, 1))
