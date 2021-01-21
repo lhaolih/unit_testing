@@ -4,6 +4,8 @@ import pandas as pd
 
 class TestClass:
 
+    pytestmark = pytest.mark.usefixtures("spark")
+
     def test_do_word_counts(self, spark):
         print(spark)
         test_input = [
